@@ -1,11 +1,17 @@
+#load dataset
 data(iris)
+
+#data overview
 head(iris)
 summary(iris)
 
+
+#data cleaning 
 sum(is.na(iris))
 sum(duplicated(iris))
 iris_clean<-iris[!duplicated(iris) & complete.cases(iris),]
 
+#statistical summaries
 sapply(iris[,1:4],mean)
 sapply(iris[,1:4],sd)
 aggregate(.~Species,data=iris,FUN=mean)
@@ -48,7 +54,3 @@ petal_size_cat<-function(petal_len){
          ifelse(petal_len<5,"medium","large"))
 }
 print(table(petal_size_cat(iris$Petal.Length)))
-
-
-
-
